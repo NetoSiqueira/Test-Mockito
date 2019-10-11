@@ -7,19 +7,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import connection.ConnectionFactory;
-import model.Pessoa;
+import model.Person;
 
 
 
-public class ContatoRepository {
+public class ContactRepository {
 	// a conex com o banco de dados
 	private Connection connection;
 
-	public ContatoRepository() {
+	public ContactRepository() {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 
-	public Boolean addContato(Pessoa contato) {
+	public Boolean addContato(Person contato) {
 		String sql = "INSERT INTO Pessoa(nivelDeAmizade ,nome, numero, conta) VALUES (?, ?, ?, ?)";
 
 		try {
@@ -42,7 +42,7 @@ public class ContatoRepository {
 		return null;
 	}
 
-	public Boolean deleteContato(Pessoa contato) {
+	public Boolean deleteContato(Person contato) {
 		String sql = "DELETE FROM Pessoa WHERE numero = ?";
 
 		try {
@@ -62,9 +62,9 @@ public class ContatoRepository {
 		return false;
 	}
 
-	public ArrayList<Pessoa> getListContatos() {
+	public ArrayList<Person> getListContatos() {
 		String sql = "SELECT * FROM Pessoa;";
-		ArrayList<Pessoa> listaContato = new ArrayList<Pessoa>();
+		ArrayList<Person> listaContato = new ArrayList<Person>();
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -76,7 +76,7 @@ public class ContatoRepository {
 				long numero = Long.parseLong(rs.getString("numero"));
 				float conta = Float.parseFloat(rs.getString("conta"));
 
-				Pessoa contato = new Pessoa(nivelDeAmizade, nome, numero, conta);
+				Person contato = new Person(nivelDeAmizade, nome, numero, conta);
 				
 
 				listaContato.add(contato);
@@ -88,10 +88,10 @@ public class ContatoRepository {
 		return listaContato;
 	}
 
-	public Pessoa getPessoa(long numero) {
+	public Person getPessoa(long numero) {
 		String sql = "SELECT * FROM Pessoa WHERE numero = ?;";
 
-		Pessoa contato = new Pessoa();
+		Person contato = new Person();
 		try {
 			// prepared statement para inserção
 			PreparedStatement stmt = connection.prepareStatement(sql);

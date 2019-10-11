@@ -3,27 +3,27 @@ package controller.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Pessoa;
-import service.ContatoService;
+import model.Person;
+import service.ContactService;
 
-public class ContatoController{
-	ContatoService contatoService = new ContatoService();	
-	ArrayList<Pessoa> pessoaRepository = new ArrayList<Pessoa>();
+public class ContactController{
+	ContactService contatoService = new ContactService();	
+	ArrayList<Person> pessoaRepository = new ArrayList<Person>();
 	
 
 
-	public boolean adicionarContato(Pessoa pessoa) {
+	public boolean addContact(Person pessoa) {
 		try {
 		if(pessoa.getConta() == 0 || pessoa.getNome() ==null || pessoa.getNumero() == 0 || pessoa.getNivelDeAmizade() ==0){
 			 return false;
 			
 		}else{
-			for (Pessoa pessoa1 : contatoService.listarContato()) {
+			for (Person pessoa1 : contatoService.listContact()) {
 				if(pessoa.getNumero() == pessoa1.getNumero()){
 					return false;
 				}
 			}
-			contatoService.adicionarContato(pessoa);	
+			contatoService.addContact(pessoa);	
 		}
 		
 	} catch (Exception e) {
@@ -33,12 +33,12 @@ public class ContatoController{
 	}
 
 
-	public boolean removerContato(long numero) {
+	public boolean removeContact(long numero) {
 		try {
 			
-		for (Pessoa pessoa : contatoService.listarContato()) {
+		for (Person pessoa : contatoService.listContact()) {
 			if(pessoa.getNumero() == numero){
-				contatoService.removerContato(pessoa);
+				contatoService.removeContact(pessoa);
 				return true;
 			}
 			}
@@ -48,14 +48,14 @@ public class ContatoController{
 		}
 		
 	}
-	public List<Pessoa> getSizeList(){
-		return contatoService.listarContato();
+	public List<Person> getSizeList(){
+		return contatoService.listContact();
 	}
 	
-	public void listarContato() {
-		List<Pessoa> lista = new ArrayList<>();
-		lista = contatoService.listarContato();
-		for (Pessoa pessoa : lista) {
+	public void listContact() {
+		List<Person> lista = new ArrayList<>();
+		lista = contatoService.listContact();
+		for (Person pessoa : lista) {
 			System.out.println("Nome: "+pessoa.getNome());
 			System.out.println("Numero: "+pessoa.getNumero());
 			System.out.println("Conta: "+pessoa.getConta());
@@ -65,9 +65,9 @@ public class ContatoController{
 		
 	}
 
-	public boolean editarContato(Pessoa pessoa) {
+	public boolean editContact(Person pessoa) {
 		
-		return contatoService.editarContato(pessoa);
+		return contatoService.editContact(pessoa);
 	}
 	
 	

@@ -7,25 +7,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import connection.ConexaoMock;
-import model.Pessoa;
+import connection.ConnectionMock;
+import model.Person;
 
 
 
 public class RepositoryMock {
-	private ArrayList<Pessoa> pessoas; 
+	private ArrayList<Person> pessoas; 
 	private static RepositoryMock repositoryMock = new RepositoryMock();
-	private ConexaoMock conexaoMock;
+	private ConnectionMock conexaoMock;
 	
 	private RepositoryMock() {
-		pessoas = new ArrayList<Pessoa>();
+		pessoas = new ArrayList<Person>();
 	}
 	
 	public static RepositoryMock getInstance() {
 		return repositoryMock;
 	}
 	
-	public void setConexaoMock(ConexaoMock conexaoMock) {
+	public void setConexaoMock(ConnectionMock conexaoMock) {
 		this.conexaoMock = conexaoMock;
 	}
 	
@@ -59,14 +59,14 @@ public class RepositoryMock {
 		return false;
 	}
 	
-	public ArrayList<Pessoa> getContato(){
+	public ArrayList<Person> getContato(){
 		String comandoSQL = "SELECT * FROM pessoa";
 		try {
 			Connection connection = conexaoMock.getConexao();
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(comandoSQL);
 			while(rs.next()) {
-				Pessoa contato = new Pessoa();
+				Person contato = new Person();
 				contato.setNumero(rs.getLong("numero"));
 				contato.setConta(rs.getFloat("conta"));
 				contato.setNome(rs.getString("nome"));

@@ -2,12 +2,12 @@ package view;
 
 import java.util.Scanner;
 
-import controller.impl.ContatoController;
-import model.Pessoa;
+import controller.impl.ContactController;
+import model.Person;
 
 public class App {
 	 Scanner navegar = new Scanner(System.in); 
-	 ContatoController contatoControler = new ContatoController();
+	 ContactController contatoControler = new ContactController();
 
 	 public void app(){
 	 	while(true){
@@ -31,8 +31,8 @@ public class App {
 	 				if(conta ==0 || numero== 0 || nome == null || nivel ==0 ){
 	 					System.out.println("Algum valor e invalido. O 0 em valores fora o nome são considerados invalido e sem a adição de nome o nome se torna invalido");
 	 				}else{
-	 					Pessoa pessoa = new Pessoa(nivel, nome, numero, conta);
-	 					contatoControler.adicionarContato(pessoa);
+	 					Person pessoa = new Person(nivel, nome, numero, conta);
+	 					contatoControler.addContact(pessoa);
 	 					}
 
 	 				
@@ -40,7 +40,7 @@ public class App {
 
 	 			case 2:
 
-	 			contatoControler.listarContato();
+	 			contatoControler.listContact();
 
 	 				break;
 	 
@@ -48,7 +48,7 @@ public class App {
 
 	 				System.out.println("Digite seu numero:");
 		 			long numero1 = navegar.nextInt();
-		 			contatoControler.removerContato(numero1);
+		 			contatoControler.removeContact(numero1);
 
 	 				break;
 
@@ -61,8 +61,8 @@ public class App {
 	 				float conta2 = navegar.nextFloat();
 	 				System.out.println("Digite seu nivel de amizade");
 	 				int nivel2 = navegar.nextInt();
-	 				Pessoa pessoa = new Pessoa(nivel2, nome2, numero2, conta2);	
-	 				contatoControler.editarContato(pessoa);
+	 				Person pessoa = new Person(nivel2, nome2, numero2, conta2);	
+	 				contatoControler.editContact(pessoa);
 	 				break;
 	 				default:
 	 					System.out.println("Essa navegação não existe");

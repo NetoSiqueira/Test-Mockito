@@ -1,4 +1,4 @@
-package teste;
+package test;
 
 import static org.junit.Assert.*;
 
@@ -6,25 +6,25 @@ import java.util.List;
 
 import org.junit.Test;
 
-import model.Pessoa;
-import service.ContatoService;
+import model.Person;
+import service.ContactService;
 
-public class ContatoServiceTeste {
-	ContatoService contatoService = new ContatoService();
+public class ContactServiceTest {
+	ContactService contatoService = new ContactService();
 
 	@Test
 	public void adicionarCorreto() {
-		Pessoa pessoa = new Pessoa(1, "neto", 123, 456);
-		contatoService.adicionarContato(pessoa);
+		Person pessoa = new Person(1, "neto", 123, 456);
+		contatoService.addContact(pessoa);
 		 assertEquals("Realizado com sucesso", contatoService.funciona);
 	
 	}
 	
 	@Test
 	public void removerCorreto(){
-		Pessoa pessoa = new Pessoa(1, "neto", 123, 456);
-		contatoService.adicionarContato(pessoa);
-		contatoService.removerContato(pessoa);
+		Person pessoa = new Person(1, "neto", 123, 456);
+		contatoService.addContact(pessoa);
+		contatoService.removeContact(pessoa);
 		assertEquals("Removido com sucesso", contatoService.funciona);
 		
 	}
@@ -32,7 +32,7 @@ public class ContatoServiceTeste {
 //	@Test
 //	public void removerNull(){
 //		Pessoa pessoa = new Pessoa(1, "neto", 123, 456);
-//		contatoService.adicionarContato(pessoa);
+//		contatoService.addContact(pessoa);
 //		contatoService.removerContato(pessoa);
 //	
 //		contatoService.removerContato(pessoa);
@@ -43,10 +43,10 @@ public class ContatoServiceTeste {
 //	@Test
 //	public void ListarCorreto(){
 //		Pessoa pessoa = new Pessoa(1, "neto", 123, 456);
-//		contatoService.adicionarContato(pessoa);
+//		contatoService.addContact(pessoa);
 //		
 //		Pessoa pessoa2 = new Pessoa(12, "neto2", 1232, 4562);
-//		contatoService.adicionarContato(pessoa2);
+//		contatoService.addContact(pessoa2);
 //		boolean lista = contatoService.listarContato();
 //		assertFalse(condition);
 //	
@@ -54,12 +54,12 @@ public class ContatoServiceTeste {
 //	}
 	@Test
 	public void ListarErrado(){
-		Pessoa pessoa = new Pessoa(1, "neto", 123, 456);
-		contatoService.adicionarContato(pessoa);
+		Person pessoa = new Person(1, "neto", 123, 456);
+		contatoService.addContact(pessoa);
 		
-		Pessoa pessoa2 = new Pessoa(12, "neto2", 1232, 4562);
-		contatoService.adicionarContato(pessoa2);
-		List<Pessoa> lista = contatoService.listarContato();
+		Person pessoa2 = new Person(12, "neto2", 1232, 4562);
+		contatoService.addContact(pessoa2);
+		List<Person> lista = contatoService.listContact();
 		assertNotEquals(1, lista.size());
 	
 		

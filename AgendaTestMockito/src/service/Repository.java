@@ -1,13 +1,13 @@
 package service;
 
 
-import repository.ContatoRepository;
+import repository.ContactRepository;
 
 public class Repository {
-	private static ContatoRepository pessoaRepository;
+	private static ContactRepository pessoaRepository;
 	
-	public static synchronized ContatoRepository getInstance(){
-		pessoaRepository = new ContatoRepository();
+	public static synchronized ContactRepository getInstance(){
+		pessoaRepository = new ContactRepository();
 		return pessoaRepository;
 		
 	}

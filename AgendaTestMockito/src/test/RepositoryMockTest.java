@@ -1,4 +1,4 @@
-package teste;
+package test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,13 +14,13 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import connection.ConexaoMock;
-import model.Pessoa;
+import connection.ConnectionMock;
+import model.Person;
 import repository.RepositoryMock;
 
-public class RepositoryMetodoTesteMock {
+public class RepositoryMockTest {
 	@Mock
-	ConexaoMock conexaoMock = Mockito.mock(ConexaoMock.class);
+	ConnectionMock conexaoMock = Mockito.mock(ConnectionMock.class);
 	
 	@Mock
 	private Connection connection = Mockito.mock(Connection.class);
@@ -34,7 +34,7 @@ public class RepositoryMetodoTesteMock {
 	@Mock
 	private Statement statement = Mockito.mock(Statement.class);
 	
-	Pessoa pessoa = new Pessoa();
+	Person pessoa = new Person();
 	
 	
 	@Before

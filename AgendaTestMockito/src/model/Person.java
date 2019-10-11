@@ -1,6 +1,6 @@
 package model;
 
-public class Pessoa {
+public class Person {
 private int nivelDeAmizade = 0 ;	
 private String nome;
 private long numero = 0;
@@ -8,14 +8,14 @@ private float conta= 0;
 
 
 
-public Pessoa(int nivelDeAmizade, String nome, long numero, float conta) {
+public Person(int nivelDeAmizade, String nome, long numero, float conta) {
 	this.nivelDeAmizade = nivelDeAmizade;
 	this.nome = nome;
 	this.numero = numero;
 	this.conta = conta;
 }
 
-public Pessoa() {
+public Person() {
 	// TODO Auto-generated constructor stub
 }
 

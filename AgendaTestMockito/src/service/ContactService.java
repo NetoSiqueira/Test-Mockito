@@ -3,15 +3,15 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
-import Interface.ContatoInterface;
-import model.Pessoa;
+import Interface.ContactInterface;
+import model.Person;
 
-public class ContatoService implements ContatoInterface{
+public class ContactService implements ContactInterface{
 
 	public String funciona;
 
 	@Override
-	public void adicionarContato(Pessoa pessoa) {
+	public void addContact(Person pessoa) {
 		
 			Repository.getInstance().addContato(pessoa);
 		
@@ -20,7 +20,7 @@ public class ContatoService implements ContatoInterface{
 	}
 
 	@Override
-	public  void removerContato(Pessoa pessoa) {
+	public  void removeContact(Person pessoa) {
 		
 			Repository.getInstance().deleteContato(pessoa);
 			this.funciona= "Removido com sucesso";	
@@ -30,14 +30,14 @@ public class ContatoService implements ContatoInterface{
 	
 
 	@Override
-	public List<Pessoa> listarContato() {
+	public List<Person> listContact() {
 		this.funciona= "Listado com sucesso";
 		return Repository.getInstance().getListContatos();
 	
 	}
 
 	@Override
-	public boolean editarContato(Pessoa pessoa) {
+	public boolean editContact(Person pessoa) {
 		try {
 			if(pessoa.getConta() == 0 || pessoa.getNome() ==null || pessoa.getNumero() == 0 || pessoa.getNivelDeAmizade() ==0){
 			 return false;
